@@ -6,9 +6,13 @@ const getMovieById = require('./query/getMovieById')
 //Mutatition
 
 const addMovie = require('./mutation/addMovie')
+const deleteMovieById = require('./mutation/deleteMovie')
+const editMovieById = require('./mutation/editMovie')
 
 module.exports = {
   getMovies,
   getMovieById,
-  addMovie
+  addMovie,
+  deleteMovieById,
+  editMovieById
 }

@@ -5,10 +5,16 @@ const getMovies = async () => {
   try {
     const dataMovies = await Movie.find({}, {}, {limit : 100})
     console.log(dataMovies, "ini data Movie")
-    return dataMovies
+    return {
+      data : dataMovies,
+      error : null
+    }
   } catch (error) {
     console.log(`error product : ${error}` )
-    return error
+    return {
+      data : null,
+      error : error
+    }
   }
 }
 

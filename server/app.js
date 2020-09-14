@@ -33,7 +33,7 @@ server.applyMiddleware({
 async function start() {
   try {
     await connectToDb();
-    app.listen(port, () => console.log(`listerning to port ${port}`) )
+    app.listen(port, () => console.log(`server listerning to port ${port}`) )
   } catch (error) {
     console.log(error)
   }

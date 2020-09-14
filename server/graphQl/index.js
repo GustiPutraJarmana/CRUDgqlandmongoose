@@ -6,17 +6,20 @@ const { makeExecutableSchema } = require('graphql-tools');
 
 const moviesTypeSchema = require('./schemas/types/Movies');
 
-const { getMovies, getMovieById, addMovie } = require('./resolvers');
+const { getMovies, getMovieById, addMovie, deleteMovieById, editMovieById } = require('./resolvers');
 
 const schemaDefinition = gql`
 type Query {
-  getMovies : [Movie]
-  getMovieById( MovieId : ID ) : Movie
+  getMovies : Movies
+  getMovieById( MovieId : ID ) : responseMovieById
 }
 
 type Mutation {
   addMovie(input : newDataMovie) : reponseAddMovie
+  deleteMovieById( MovieId : ID ) : responseDeletMovie
+  editMovieById(input : dataToEdit ) : responseEditMovie
 }
+
 
 schema {
   query : Query
@@ -35,7 +38,9 @@ const schema = makeExecutableSchema({
       getMovieById
     },
     Mutation : {
-      addMovie
+      addMovie,
+      deleteMovieById,
+      editMovieById
     }
   }
 })

@@ -1,7 +1,5 @@
 "use strict"
-
 const Movie = require('../../../Model/Movie')
-
 
 const addMovie = async (_, args, root) => {
   try {
@@ -14,9 +12,17 @@ const addMovie = async (_, args, root) => {
     }
     const insertDataMovie = await Movie.create(dataInsert)
     console.log(insertDataMovie, 'ini insert data movie')
+    return {
+      data : insertDataMovie,
+      message : `Added data with tittle ${insertDataMovie.title} is succefull`,
+      error : null
+    }
   } catch (error) {
     console.log(`error product : ${error}` )
-    return error
+    return {
+      data : null,
+      error : error
+    }
   }
 }
 
